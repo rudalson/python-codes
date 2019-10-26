@@ -41,7 +41,7 @@ def help(update, context):
 def mise(update, context):
     """Send a message when the command /mise is issued."""
 
-    html = requests.get('https://search.naver.com/search.naver?query=날씨')
+    html = requests.get('https://search.naver.com/search.naver?query=천호동 날씨')
     # pprint(html.text)
 
     soup = bs(html.text, 'html.parser')
@@ -57,6 +57,8 @@ def mise(update, context):
 
     print(reply_text)
     update.message.reply_text(reply_text)
+
+    print(context)
 
 
 def echo(update, context):
