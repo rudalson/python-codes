@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # This program is dedicated to the public domain under the CC0 license.
 
@@ -32,8 +32,8 @@ area_name = "천호동"
 
 def load_config():
     config = configparser.ConfigParser()
-    conf_path = os.path.join(os.path.dirname(os.getcwd()), "conf")
-    config.read(os.path.join(conf_path, "config.ini"))
+    conf_path = os.path.join(os.path.dirname(__file__), "conf", "config.ini")
+    config.read(conf_path)
     return config['telegram']['sample_bot_token']
 
 
@@ -70,6 +70,7 @@ def location(update, context):
         area_name = context.args[0]
 
     update.message.reply_text(f'Location {area_name} set!')
+    print(f'Location {area_name} set!')
 
 
 def help(update, context):
@@ -83,6 +84,7 @@ def alarm(context):
 
     job = context.job
     context.bot.send_message(job.context, text=reply_message)
+    print(reply_message)
 
 
 def start_timer(update, context):
@@ -108,6 +110,7 @@ def start_timer(update, context):
 
         global area_name
         update.message.reply_text(f'{area_name} 미세먼지 정보 알람 시작!')
+        print(f'{area_name} 미세먼지 정보 알람 시작!')
         context.job_queue.run_once(alarm, 1, context=chat_id)
 
     except (IndexError, ValueError):
@@ -156,6 +159,8 @@ def main(token):
 
     # Start the Bot
     updater.start_polling()
+
+    print('dust info bot start!')
 
     # Block until you press Ctrl-C or the process receives SIGINT, SIGTERM or
     # SIGABRT. This should be used most of the time, since start_polling() is
