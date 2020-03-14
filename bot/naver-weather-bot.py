@@ -32,8 +32,13 @@ area_name = "천호동"
 
 def load_config():
     config = configparser.ConfigParser()
-    conf_path = os.path.join(os.path.dirname(__file__), "conf", "config.ini")
-    config.read(conf_path)
+    # conf_path = os.path.join(os.path.dirname(__file__), "conf", "config.ini")
+    # print(conf_path)
+    # config.read(conf_path)
+    basedir = os.path.dirname(os.path.realpath(__file__))
+    conf_path = os.path.join(basedir, "../conf")
+    print(conf_path)
+    config.read(os.path.join(conf_path, "config.ini"))
     return config['telegram']['sample_bot_token']
 
 
