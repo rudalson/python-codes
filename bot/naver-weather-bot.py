@@ -43,15 +43,15 @@ def load_config():
 
 
 def get_naver_dust(location=""):
-    html = requests.get(f'https://search.naver.com/search.naver?query={location} 미세먼지')
+    html = requests.get(f'https://search.naver.com/search.naver?query={location} 초미세먼지')
 
     soup = bs(html.text, 'html.parser')
 
     content_box = soup.findAll('div', {'class': 'content_box'})
 
-    dust = content_box[1].find('div', {'class': 'state_info'}).find("em", {'class': 'main_figure'}).text
+    ultra_dust = content_box[1].find('div', {'class': 'state_info'}).find("em", {'class': 'main_figure'}).text
 
-    ultra_dust = content_box[1].find('div', {'class': 'all_state'}).find('span', {'class': 'state'}).text
+    dust = content_box[1].find('div', {'class': 'all_state'}).find('span', {'class': 'state'}).text
 
     update_time = content_box[1].find('div', {'class': 'guide_bx'}).find('span', {'class': 'update'}).find('em').text
 
