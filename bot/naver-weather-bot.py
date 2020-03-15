@@ -55,7 +55,7 @@ def get_naver_dust(location=""):
 
     update_time = content_box[1].find('div', {'class': 'guide_bx'}).find('span', {'class': 'update'}).find('em').text
 
-    return f'{dust}, {ultra_dust}(미세, 초미세) - {update_time}'
+    return f'{ultra_dust}, {dust}(미세, 초미세) - {update_time}'
 
 
 def get_area_name():

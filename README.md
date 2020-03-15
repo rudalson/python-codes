@@ -14,7 +14,7 @@ pip install python-telegram-bot --upgrade
 
 ### docker 실행
 ```shell script
-$ docker build -t naver-weather-bot
+$ docker build -t naver-weather-bot .
 $ docker run --restart=on-failure:10 --name dust-weather --detach naver-weather-bot d5e6f70be5771efb7495093407aaa20cf0bf71eb41da5b57436383a39c2ef82c
 ```
 
