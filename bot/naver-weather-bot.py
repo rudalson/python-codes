@@ -27,7 +27,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-area_name = "천호동"
+area_name = "분당 구미동"
 
 
 def load_config():
